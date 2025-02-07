@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  opa:
+    image: openpolicyagent/opa:latest
+    ports:
+      - "8002:8181"
+    volumes:
+      - ./opa_data:/policies
+    command:
+      - "run"
+      - "--server"
+      - "--addr=:8181"
+      - "--log-level=debug"
+      - "--watch"
+      - "/policies"
+
